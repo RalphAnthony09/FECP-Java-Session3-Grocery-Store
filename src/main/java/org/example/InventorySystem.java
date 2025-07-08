@@ -18,6 +18,7 @@ public class InventorySystem {
     }
 
     public boolean addProduct(String product, int quantity) {
+
         inventory.put(product, quantity);
         return true;
     }
@@ -47,6 +48,7 @@ public class InventorySystem {
             return false;
         }
         inventory.put(product, newQuantity);
+        System.out.println("Stock updated!");
         return true;
     }
 

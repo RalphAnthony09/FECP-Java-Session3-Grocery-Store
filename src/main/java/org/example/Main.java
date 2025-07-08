@@ -1,10 +1,7 @@
 package org.example;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
@@ -16,8 +13,14 @@ public class Main {
 
             menuSystem();
 
-            response = scanner.nextInt();
-            scanner.nextLine();
+            try {
+                response = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid option.");
+                scanner.nextLine();
+                continue;
+            }
 
             switch(response) {
 
@@ -69,8 +72,6 @@ public class Main {
                     scanner.nextLine();
 
                     inventoryManager.updateProduct(productToUpdate, newQuantity);
-
-                    System.out.println("Stock updated!");
                     break;
                 case 5:
                     System.out.printf("Enter product name to remove: ");
@@ -78,6 +79,8 @@ public class Main {
 
                     inventoryManager.removeProduct(productToRemove);
                     break;
+                default:
+                    System.out.println("Invalid option.");
             }
         }
 
