@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.*;
 
-public class Main {
+public class GroceryInventory {
     public static void main(String[] args) {
 
         InventorySystem inventoryManager = new InventorySystem();
@@ -31,11 +31,6 @@ public class Main {
                     System.out.printf("Enter product name: ");
                     String productAdded = scanner.nextLine();
 
-                    if (inventoryManager.getQuantity(productAdded) != -1) {
-                        System.out.println("Product '" + productAdded + "' already exists.");
-                        break;
-                    }
-
                     System.out.printf("Enter quantity: ");
                     int amountOfProduct;
                     try {
@@ -55,12 +50,12 @@ public class Main {
                     System.out.printf("Enter product name to check: ");
                     String productCheck = scanner.nextLine();
 
-                    int quantityInStock = inventoryManager.getQuantity(productCheck); // Call getQuantity to get the amount
+                    int quantityInStock = inventoryManager.getQuantity(productCheck);
 
                     if (quantityInStock != -1) {
                         System.out.println(productCheck + " is in stock: " + quantityInStock);
                     } else {
-                        System.out.println("Product '" + productCheck + "' not found in inventory.");
+                        System.out.println("Product not found.");
                     }
                     break;
                 case 4:
@@ -78,6 +73,9 @@ public class Main {
                     String productToRemove = scanner.nextLine();
 
                     inventoryManager.removeProduct(productToRemove);
+                    break;
+
+                case 6:
                     break;
                 default:
                     System.out.println("Invalid option.");

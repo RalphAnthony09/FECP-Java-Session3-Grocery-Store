@@ -19,8 +19,13 @@ public class InventorySystem {
 
     public boolean addProduct(String product, int quantity) {
 
-        inventory.put(product, quantity);
-        return true;
+
+        if(quantity > 0) {
+            inventory.put(product, quantity);
+            return true;
+        }
+
+        return false;
     }
 
     public int getQuantity(String product) {
@@ -40,7 +45,7 @@ public class InventorySystem {
 
     public boolean updateProduct(String product, int newQuantity) {
         if (!inventory.containsKey(product)) {
-            System.out.println("Product '" + product + "' not found in inventory.");
+            System.out.println("Product not found.");
             return false;
         }
         if (newQuantity < 0) {
@@ -54,7 +59,7 @@ public class InventorySystem {
 
     public boolean removeProduct(String product) {
         if (!inventory.containsKey(product)) {
-            System.out.println("Product '" + product + "' not found in inventory.");
+            System.out.println("Product not found.");
             return false;
         }
         inventory.remove(product);
